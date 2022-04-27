@@ -47,21 +47,20 @@
     calculateButton.addEventListener('click', function(e){
         let value1 = +a.value;
         let value2 = +b.value;
-        let operation = +operation.value;
-
-        if(operation.value == "+"){
+        let symbol = +operation.value;
+        if(symbol.value == "+"){
             add(value1, value2);
-        } else if(operation.value == "-"){
+        } else if(symbol.value == "-"){
             sub(value1, value2);
-        } else if(operation.value == "*"){
+        } else if(symbol.value == "*"){
             multiply(value1, value2);
-        } else if(operation.value == "/"){
+        } else if(symbol.value == "/"){
             divide(value1, value2);
-        } else if(operation.value == "%"){
+        } else if(symbol.value == "%"){
             modulus(value1, value2);
         }
 
-        ans.textContent = `${value1} ${operation} ${value2} = ${answer}`
+        ans.textContent = `${value1} ${symbol} ${value2} = ${answer}`
     })
 
     function add(a, b){
@@ -88,7 +87,6 @@
         let answer = a % b;
         return answer;
     }
-
 
     clearButton.addEventListener('click', function(e){
         a.value = " ";
