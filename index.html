@@ -22,11 +22,11 @@
         <div class="row">
             <label for="operation">Choose the Operation:</label>
             <select name="operation" id="operation">
-                <option value="add"> + (addition)</option>
-                <option value="subtract"> - (subtraction)</option>
-                <option value="multiply"> * (multiplication)</option>
-                <option value="divide"> / (division)</option>
-                <option value="modulus"> % (modulus)</option>
+                <option value="+"> + (addition)</option>
+                <option value="-"> - (subtraction)</option>
+                <option value="*"> * (multiplication)</option>
+                <option value="/"> / (division)</option>
+                <option value="%"> % (modulus)</option>
             </select>
         </div>
         <button id="calc">Calculate</button>
@@ -39,6 +39,7 @@
     const b = document.getElementById('num2');
     const ans = document.querySelector('p');
     const operation = document.getElementById('operation');
+    let answer = 0;
 
     const calculateButton = document.getElementById('calc');
     const clearButton = document.getElementById('clear');
@@ -46,27 +47,48 @@
     calculateButton.addEventListener('click', function(e){
         let value1 = +a.value;
         let value2 = +b.value;
+        let operation = +operation.value;
 
-        if(calculate(value1, value2, operation){
-            ans.textContent = ''
-        })
+        if(operation.value == "+"){
+            add(value1, value2);
+        } else if(operation.value == "-"){
+            sub(value1, value2);
+        } else if(operation.value == "*"){
+            multiply(value1, value2);
+        } else if(operation.value == "/"){
+            divide(value1, value2);
+        } else if(operation.value == "%"){
+            modulus(value1, value2);
+        }
 
+        ans.textContent = `${value1} ${operation} ${value2} = ${answer}`
     })
 
-    function calculate(value1, value2, operation){
-        if(operation == "add"){
-            let ans = value1 + value2;
-        }
-        if(operation == "subtract"){
-            let ans = value1 - value2;
-        }
-        if(operation == "multiply"){
-            let ans = value1 * value2;
-        }
-        if(operation == "divide"){
-            let ans = value1 / value2;
-        }
+    function add(a, b){
+        let answer = a + b;
+        return answer;
     }
+
+    function sub(a, b){
+        let answer = a - b;
+        return answer;
+    }
+
+    function multiply(a, b){
+        let answer = a * b;
+        return answer;
+    }
+
+    function divide(a, b){
+        let answer = a / b;
+        return answer;
+    }
+
+    function modulus(a, b){
+        let answer = a % b;
+        return answer;
+    }
+
 
     clearButton.addEventListener('click', function(e){
         a.value = " ";
